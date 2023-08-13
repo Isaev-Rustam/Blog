@@ -2,7 +2,7 @@
 /// <reference types="vitest" />
 /// <reference types="vite/client" />
 
-import path from 'path';
+import * as path from 'path';
 
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';

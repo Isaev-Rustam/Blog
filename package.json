@@ -9,9 +9,7 @@
     "format": "npx prettier --write ./src",
     "lint": "npx eslint src --ext .ts,.tsx",
     "lint:fix": "eslint ./src --fix",
-    "preview": "vite preview",
-    "test": "vitest",
-    "prepare": "husky install"
+    "test": "vitest"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.15",

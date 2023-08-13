@@ -1,34 +1,6 @@
 name: Test
 on: push
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get repository code
-        uses: actions/checkout@v3
-      - name: Cache modules
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: node-modules-${{ hashFiles('**/package-lock.json') }}
-      - name: Install deps
-        run: npm ci
-      - name: lint app
-        run: npm run lint
-  format:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get repository code
-        uses: actions/checkout@v3
-      - name: Cache modules
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: node-modules-${{ hashFiles('**/package-lock.json') }}
-      - name: Install deps
-        run: npm ci
-      - name: format app
-        run: npm run format
   test:
     runs-on: ubuntu-latest
     steps:
@@ -43,6 +15,36 @@ jobs:
         run: npm ci
       - name: test app
         run: npm run test
+  lint:
+    runs-on: ubuntu-latest
+    needs: [test]
+    steps:
+      - name: Get repository code
+        uses: actions/checkout@v3
+      - name: Cache modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Install deps
+        run: npm ci
+      - name: lint app
+        run: npm run lint
+  format:
+    runs-on: ubuntu-latest
+    needs: [test]
+    steps:
+      - name: Get repository code
+        uses: actions/checkout@v3
+      - name: Cache modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Install deps
+        run: npm ci
+      - name: format app
+        run: npm run format
   build:
     runs-on: ubuntu-latest
     needs: [lint, format, test]

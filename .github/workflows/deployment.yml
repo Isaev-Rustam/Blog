@@ -13,5 +13,19 @@ jobs:
           key: node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install deps
         run: npm ci
-      - name: Test app
+      - name: lint app
         run: npm run lint
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get repository code
+        uses: actions/checkout@v3
+      - name: Cache modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Install deps
+        run: npm ci
+      - name: format app
+        run: npm run format

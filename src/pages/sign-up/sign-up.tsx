@@ -45,6 +45,7 @@ const SignUp = () => {
             )}
           </button>
         </label>
+        <EyeSlash />
       </form>
     </div>
   );

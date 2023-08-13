@@ -1,0 +1,11 @@
+name: Blog
+on: workflow_dispatch
+jobs:
+  print:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print console log
+        run: echo Helo gh Actions !
+    
+    
+

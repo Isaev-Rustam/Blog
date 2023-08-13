@@ -15,4 +15,3 @@ coverage
 postcss.config.js
 tailwind.config.js
 vite-env.d.ts
-setup.ts

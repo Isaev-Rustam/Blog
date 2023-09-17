@@ -17,6 +17,7 @@ const SignUp = lazy(() => import('@/pages/sign-up'));
 
 const App = () => {
   const { user } = useAppSelector((state) => state.auth);
+
   return (
     <Suspense fallback={<p>Loading...</p>}>
       <Routes>
